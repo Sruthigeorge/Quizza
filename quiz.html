@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Online Quiz</title>
+<style>
+		
+body{
+	background-image: url("https://i.pinimg.com/originals/05/3d/0e/053d0e0e6a047192ab76c94f47355cdd.jpg");
+	color:#fff;
+	font-family:'Arial', sans-serif;
+	font-size:14px;
+}
+
+#container{
+	width:60%;
+	background-image:url("https://png.pngtree.com/thumb_back/fh260/back_pic/00/02/40/75561771294c746.jpg");
+	margin:20px auto;
+	overflow:auto;
+	padding:25px;
+}
+
+header{
+	text-align:center;
+	border-bottom:#fff dashed 1px;
+}
+
+header h1{
+	margin:0;
+	padding:0;
+}
+
+header p{
+	padding:0;
+	margin-top:5px;
+	color:#000;
+}
+
+section{
+	min-height:400px;
+}
+
+input[type='submit']{
+	background:#f06226;
+	border:0;
+	color:#fff;
+	padding:10px 15px;
+	cursor:pointer;
+}
+
+#results h3{
+	background:#f06226;
+	padding:10px;
+	margin:10px 0;
+}
+
+#results span{
+	color:#000;
+	font-weight:bold;
+}
+ </style>
+		
+<script>
+	function submitAnswers(){
+	var total = 4;
+	var score = 0;
+	
+	var q1 = document.forms["quizForm"]["q1"].value;
+	var q2 = document.forms["quizForm"]["q2"].value;
+	var q3 = document.forms["quizForm"]["q3"].value;
+	var q4 = document.forms["quizForm"]["q4"].value;
+	
+	for(i = 1; i <= total;i++){
+		if(eval('q'+i) == null || eval('q'+i) == ''){
+			alert('You missed question '+ i);
+			return false;
+		}
+	}
+	
+	var answers = ["a","d","c","a"];
+	
+	for(i = 1; i <= total;i++){
+		if(eval('q'+i) == answers[i - 1]){
+			score++;
+		}
+	}
+	
+	var results = document.getElementById('results');
+	results.innerHTML = '<h3>You scored <span>'+score+'</span> out of <span>'+total+'</span></h3>';
+	alert('You scored '+score+' out of ' +total);
+	
+	return false;
+}
+</script>
+	</head>
+	<body>
+		<div id="container">
+			<header>
+				<h1>QUIZZA</h1>
+				<p>Test your knowledge </p>
+			</header>
+			<section>
+				<div id="results"></div>
+				<form name="quizForm" onsubmit="return submitAnswers()">
+					<h3>1. HTML stands for?</h3>
+					<input type="radio" name="q1" value="a" id="q1a">a. Hyper Text Markup Languaget;<br>
+					<input type="radio" name="q1" value="b" id="q1b">b. High Text Markup Language;<br>
+					<input type="radio" name="q1" value="c" id="q1c">c. Hyper Tabular Markup Language;<br>
+					<input type="radio" name="q1" value="d" id="q1d">d. None of these;<br>
+					
+					<h3>2. Correct HTML tag for the largest heading is:</h3>
+					<input type="radio" name="q2" value="a" id="q2a">a. &lt;head&gt; <br>
+					<input type="radio" name="q2" value="b" id="q2b">b. &lt;h6&gt;<br>
+					<input type="radio" name="q2" value="c" id="q2c">c. &lt;heading&gt;<br>
+					<input type="radio" name="q2" value="d" id="q2d">d. &lt;h1&gt;<br>
+
+					<h3>3.  Webpages starts with which of the following tag ?</h3>
+					<input type="radio" name="q3" value="a" id="q3a">a. &lt;body&gt;<br>
+					<input type="radio" name="q3" value="b" id="q3b">b. &lt;title&gt;<br>
+					<input type="radio" name="q3" value="c" id="q3c">c. &lt;html&gt;<br>
+					<input type="radio" name="q3" value="d" id="q3d">d. &lt;form&gt;<br>
+
+					<h3>4. Who is making the web standards?</h3>
+					<input type="radio" name="q4" value="a" id="q4a">a. The World Wide Web Consortium<br>
+					<input type="radio" name="q4" value="b" id="q4b">b. Microsoft<br>
+					<input type="radio" name="q4" value="c" id="q4c">c. Mozilla<br>
+					<input type="radio" name="q4" value="c" id="q4d">d. Google<br>
+
+					<input type="submit" value="Submit Answers">
+				</form>
+			</section>
+		</div>
+	</body>	
+</html>
